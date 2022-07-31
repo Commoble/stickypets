@@ -87,10 +87,9 @@ public class ClientProxy
 				poseStack.pushPose();
 
 				float partialTicks = event.getPartialTick();
-				float rotation = Mth.lerp(partialTicks, living.yRotO, living.getYRot());
-				poseStack.mulPose(Vector3f.YP.rotationDegrees(rotation));
+				float bodyRotation = Mth.lerp(partialTicks, living.yBodyRotO, living.yBodyRot);
+				poseStack.mulPose(Vector3f.YN.rotationDegrees(bodyRotation));
 				poseStack.translate(storedPos.x, storedPos.y, storedPos.z);
-				poseStack.mulPose(Vector3f.YN.rotationDegrees(rotation * 2F));
 				Minecraft.getInstance().getItemRenderer().renderStatic(itemStack, ItemTransforms.TransformType.FIXED, event.getPackedLight(), OverlayTexture.NO_OVERLAY, poseStack, buffers, living.getId());
 				
 				poseStack.popPose();

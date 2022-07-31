@@ -208,7 +208,8 @@ public class StickyPets
 					}
 					Vec3 hitPos = hitResult.getLocation();
 					Vec3 localPos = hitPos.subtract(target.position());
-					Vec3 rotatedPos = localPos.yRot(-(target.getYRot() * Mth.DEG_TO_RAD));
+					float rotation = ((LivingEntity)target).yBodyRot;
+					Vec3 rotatedPos = localPos.yRot(rotation*Mth.DEG_TO_RAD);
 					ItemStack retrievedStack = cap.removeNearestItem(rotatedPos);
 					if (!player.isCreative()) // player creative inventory overrides mess with inventory syncing
 					{
@@ -253,7 +254,8 @@ public class StickyPets
 					}
 					Vec3 hitPos = hitResult.getLocation();
 					Vec3 localPos = hitPos.subtract(target.position());
-					Vec3 rotatedPos = localPos.yRot(-(target.getYRot() * Mth.DEG_TO_RAD));
+					float rotation = ((LivingEntity)target).yBodyRot;
+					Vec3 rotatedPos = localPos.yRot(rotation*Mth.DEG_TO_RAD);
 					cap.addItem(rotatedPos, stack.copy());
 					if (!player.isCreative()) // player creative inventory overrides mess with inventory syncing
 					{
